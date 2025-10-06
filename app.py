@@ -12,10 +12,10 @@ def fetch_google_trends(region="US", limit=10):
     topics = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)  # ✅ use Chromium/Chrome
+        browser = p.chromium.launch(headless=True)  # use Chromium/Chrome
         page = browser.new_page()
         page.goto(url, timeout=20000)
-        page.wait_for_timeout(5000)  # wait for JS-rendered data
+        page.wait_for_timeout(5000)  # Wait for JS-rendered data
 
         html = page.content()
         soup = BeautifulSoup(html, "html.parser")
